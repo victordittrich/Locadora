@@ -8,5 +8,3 @@ function test(){
     senha2.value = "";
 }
 }
-
-

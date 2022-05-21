@@ -18,7 +18,7 @@
 		$senha = $conexao -> real_escape_string($_POST['senha']);
 		
         //verifica o usuário no banco de dados.
-		$sql="SELECT `cpf` FROM `adm` WHERE `cpf` = '".$cpf."' AND `senha` = '".$senha."';";
+		$sql="SELECT `cpf` FROM `funcionario` WHERE `cpf` = '".$cpf."' AND `senha` = '".$senha."';";
 		$res = $conexao->query($sql);
 
 		if($res->num_rows != 0){
@@ -35,7 +35,6 @@
 
 
     ?>
-
 
     </body>
 </html>

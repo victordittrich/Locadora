@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LoCARdora | EDITAR </title>
+    <title>LoCARdora | Cadastro </title>
     <style>
 
     *{
@@ -140,30 +140,32 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $usuario = $conexao -> real_escape_string($_POST['usuario']);
 
 
-    $sql="INSERT INTO `clientes`( `cpf`, `senha`, `telefone`, `usuario`) VALUES ('".$cpf."', '".$senha."' ,'".$telefone."' ,'".$usuario."')";
+    $sql="INSERT INTO `funcionario`( `cpf`, `senha`, `telefone`, `usuario`) VALUES ('".$cpf."', '".$senha."' ,'".$telefone."' ,'".$usuario."')";
 	
     $res = $conexao->query($sql);
 	$conexao -> close();
-	header('Location: index.php');
+	header('Location: home.php');
 	exit();
 }
 ?>
     <main></main>
     <div class="login">
-        <h1>ATUALIZAR PERFIL</h1>
+        <h1>Cadastro de Funcionario</h1>
         <br>
-        <form method="post" action="cadastrar.php" id="formCadastrar" name="formCadastrar">    
+        <form method="post" action="cadastrarFunc.php" id="formCadastrar" name="formCadastrar">
+            <p>CPF</p>
+            <input type="text" required="required" placeholder="CPF" name="cpf" pattern="(\d{3}\.?\d{3}\.?\d{3}-?\d{2})|(\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2})">
             <p>Usuário</p>
             <input required="required" type="text" name="usuario" placeholder="username">
             <p>Telefone</p>
             <input required="required" type="text" name="telefone" placeholder="telefone">
-            <p>Senha atual</p>
+            <p>Senha</p>
             <input required="required" type="password" placeholder="password" name="senha" id="senha">
-            <p>Nova senha</p>
+            <p>Confirmar senha</p>
             <input required="required" type="password" placeholder="password" name="confsenha" id="confsenha">
-            <input type="submit" value="SALVAR" >
+            <input onclick="test()" type="submit" value="Cadastrar" >
             <br>
-            <a href="home.php" id="ak">Cancelar</a>
+            <a href="indexAdm.php" id="ak">Voltar</a>
         </form>
     </div>
     <script src="confirm.js"></script>

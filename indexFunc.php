@@ -92,7 +92,7 @@ h1 {
 .login a{
     font-weight: bold;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 20px;
     color: #4b4b4b;
     transition: 0.2s;
@@ -130,19 +130,18 @@ select:-webkit-autofill:focus {
     <main></main>
     <div class="login">
 
-        <h1>Login</h1>
+        <h1>Logar funcionário</h1>
         <br>
-        <form method="post" action="login.php">
+        <form method="post" action="loginFunc.php">
             <p>CPF</p>
             <input required="required" type="text" name="cpf" placeholder="cpf" pattern="(\d{3}\.?\d{3}\.?\d{3}-?\d{2})|(\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2})">
             <p>Senha</p>
             <input required="required" type="password" name="senha" placeholder="password">
             <br>
             <input type="submit" value="Logar">
-            <a href="esqueceuasenha.php">Esqueceu sua senha?</a>
             <br>
             <br>
-            <a href="cadastrar.php">Cadastre-se já</a>
+            <a href="indexAdm.php">Voltar</a>
         </form>
     </div>
 </body>

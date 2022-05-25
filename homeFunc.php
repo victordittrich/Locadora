@@ -182,21 +182,20 @@
 			session_start();
 
 			if (!$_SESSION['cpf']){
-				header('Location: index.php');
+				header('Location: indexAdm.php');
 				exit;
 			}
-      
 		?>
     <header>
       <nav>
-        <a class="logo" href="home.php">Locadora | ADM</a>
+        <a class="logo" href="home.php">Locadora | Funcionário</a>
         <div class="mobile-menu">
           <div class="line1"></div>
           <div class="line2"></div>
           <div class="line3"></div>
         </div>
           <ul class="nav-list">
-            <li><a href="cadastrarFunc.php">CADAST. FUNC.</a></li>
+            <li><a href="cadastrarFunc.php">CADAST. CLIENT.</a></li>
             <li><a href="#">CARROS</a></li>
             <li><a href="sair.php"><b>SAIR</b></a></li>
             <li><a href="perfil.php"><img src="images/perfil.png" height="30px" alt=""></a></li>

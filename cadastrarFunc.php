@@ -125,25 +125,15 @@ select:-webkit-autofill:focus {
 <body>
 <?php
 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
-	$user = "root";
-	$password = "root";
-	$database = "locadora";
-	$hostname = "localhost";
-
-	$conexao = new mysqli($hostname,$user,$password,$database);
-
-	// Evita caracteres epeciais (SQL Inject)
-	$telefone = $conexao -> real_escape_string($_POST['telefone']);
-	$senha = $conexao -> real_escape_string($_POST['senha']);
-	$cpf = $conexao -> real_escape_string($_POST['cpf']);
-    $usuario = $conexao -> real_escape_string($_POST['usuario']);
-
-
-    $sql="INSERT INTO `funcionario`( `cpf`, `senha`, `telefone`, `usuario`) VALUES ('".$cpf."', '".$senha."' ,'".$telefone."' ,'".$usuario."')";
-	
-    $res = $conexao->query($sql);
-	$conexao -> close();
+    $pdo = new PDO('mysql:host=localhost;dbname=locadora','root', 'root');
+    
+    if(isset($_POST['acao'])){
+    $cpf = $_POST['cpf'];
+    $usuario = $_POST['usuario'];
+    $senha = $_POST['senha'];
+    $telefone = $_POST['telefone'];
+    $sql = $pdo->prepare("INSERT INTO `funcionario` VALUES (NULL, ?, ?, ?, ?)");
+    $sql->execute(array($cpf, $usuario, $senha, $telefone));
 	header('Location: home.php');
 	exit();
 }
@@ -152,7 +142,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <div class="login">
         <h1>Cadastro de Funcionario</h1>
         <br>
-        <form method="post" action="cadastrarFunc.php" id="formCadastrar" name="formCadastrar">
+        <form method="post">
             <p>CPF</p>
             <input type="text" required="required" placeholder="CPF" name="cpf" pattern="(\d{3}\.?\d{3}\.?\d{3}-?\d{2})|(\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2})">
             <p>Usuário</p>
@@ -163,9 +153,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             <input required="required" type="password" placeholder="password" name="senha" id="senha">
             <p>Confirmar senha</p>
             <input required="required" type="password" placeholder="password" name="confsenha" id="confsenha">
-            <input onclick="test()" type="submit" value="Cadastrar" >
+            <input onclick="test()" type="submit" value="Cadastrar" name="acao" >
             <br>
-            <a href="indexAdm.php" id="ak">Voltar</a>
+            <a href="home.php" id="ak">Voltar</a>
         </form>
     </div>
     <script src="confirm.js"></script>

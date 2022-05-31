@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Locadora | Home</title>
+    <title>Home</title>
 
   <style>* {
     margin: 0;
@@ -13,6 +13,10 @@
     list-style: none;
   }
   
+  body{
+    background-color: black;
+  }
+
   a {
     color: rgba(235, 223, 223, 0.719);
     text-decoration: none;
@@ -39,9 +43,10 @@
   }
   
   main {
-    background: url("images/bg.png") no-repeat center center;
+    background: url("images/bg.gif") no-repeat center center;
     background-size: cover;
     height: 92vh;
+    opacity: 0.6;
   }
   
   .nav-list {
@@ -181,10 +186,16 @@
 			//session_start inicia a sessão
 			session_start();
 
+    
+      if(isset($_SESSION['cpf'])){
 			if (!$_SESSION['cpf']){
+        session_destroy();
 				header('Location: index.php');
-				exit;
-			}
+      }
+    }else{
+      session_destroy();
+				header('Location: index.php');
+    }
       
 		?>
     <header>
@@ -196,9 +207,8 @@
           <div class="line3"></div>
         </div>
           <ul class="nav-list">
-            <li><a href="cadastrarFunc.php">CADAST. FUNC.</a></li>
+            <li><a href="cadastrarFunc.php">CDT. FUNC.</a></li>
             <li><a href="#">CARROS</a></li>
-            <li><a href="sair.php"><b>SAIR</b></a></li>
             <li><a href="perfil.php"><img src="images/perfil.png" height="30px" alt=""></a></li>
           </ul>
       </nav>

@@ -91,13 +91,33 @@ h1 {
     letter-spacing: 3px;
 }
 
+
 </style>
 </head>
 <body>
     <main></main>
     <div class="login">
-        <img class="eu" src="images/larusso.jpg" height="200px" alt="">
-        <h1>ADMINISTRADOR</h1>
+        <img class="eu" src="
+        <?php 
+         session_start();
+        if($_SESSION['cpf'] == "09720639946"){
+            echo "images/larusso.jpg";                                                                                                                                                                                                                                           
+        } else {
+            echo "images/johnny.jpg";
+        } ?>
+        " height="200px" alt="">
+        
+        <h1 id="ttl">
+        <?php
+        
+        if($_SESSION['cpf'] == "09720639946"){
+            echo "ADMINISTRADOR";                                                                                                                                                                                                                                           
+        } else {
+            echo "FUNCIONÁRIO";
+        }
+        ?>
+        </h1>
+        <a href="sair.php"><button class="bt">LOGOUT</button></a>
         <a href="home.php"><button class="bt">VOLTAR</button></a>
         
     </div>

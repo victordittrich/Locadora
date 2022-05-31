@@ -20,8 +20,8 @@ main {
 }
 
 .login {
-    width: 320px;
-    height: auto;
+    width: 270px;
+    height: 300px;
     /*border: 2px solid #000;*/
     border-radius: 45px 45px 45px 45px;
     color: #fff;
@@ -30,9 +30,10 @@ main {
     left: 50%;
     position: absolute;
     transform: translate(-50%, -50%);
-    box-sizing: border-box;
+    box-sizing: content-box;
     padding: 50px 28px;
     border: 2px solid white;
+    padding-left: 45px;
 }
 
 h1 {
@@ -54,7 +55,7 @@ h1 {
 }
 
 .login input{
-    width: 100%;
+    width: 85%;
     margin-bottom: 21px;
 }
 .login input[type="text"], input[type="password"] {
@@ -66,7 +67,9 @@ h1 {
     color: white;
     font-size: 16px;
     padding-left: 3px;
+
 }
+
 
 .login input[type="submit"]{
     border: none;
@@ -80,6 +83,7 @@ h1 {
     letter-spacing: 2px;
     font-size: 1rem;
     text-transform: uppercase;
+    margin-top: 10px;
 }
 
 .login input[type="submit"]:hover {
@@ -118,28 +122,40 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  border: 1px solid rgb(48,66,42);
+  border: none;
+  border-bottom: 1px solid white;
   -webkit-text-fill-color: white;
   transition: background-color 5000s ease-in-out 0s;
 }
-
-
+#olho{
+    filter: invert(100%);
+    position: relative;
+    right: 29px;
+    height :25px;
+    cursor: pointer;
+    top: 5px;
+}
 </style>
 </head>
 <body>
     <main></main>
     <div class="login">
 
-        <h1>Logar</h1>
+        <h1>LOGIN</h1>
         <br>
         <form method="post" action="login.php">
             <p>CPF</p>
             <input required="required" type="text" name="cpf" placeholder="cpf" pattern="(\d{3}\.?\d{3}\.?\d{3}-?\d{2})|(\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2})">
             <p>Senha</p>
-            <input required="required" type="password" name="senha" placeholder="password">
+            <input id="senha" required="required" type="password" name="senha" placeholder="password">
+            <img id="olho" src="images/olho.png" >
             <br>
             <input type="submit" value="Logar">
         </form>
+
+
+
+        <script src="verSenha.js"></script>
     </div>
 </body>
 </html>

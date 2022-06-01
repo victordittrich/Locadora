@@ -173,6 +173,32 @@ label{
 </head>
 <body>
 
+<?php
+$pdo = new PDO('mysql:host=localhost;dbname=locadora','root', 'root');
+
+if(isset($_POST['go'])){
+
+$marca = $_POST['marca'];
+$cambio = $_POST['cambio'];
+$modelo = $_POST['modelo'];
+$categoria = $_POST['categoria'];
+$valor = $_POST['valor'];
+$ano = $_POST['ano'];
+$fabricante = $_POST['fabricante'];
+$placa = $_POST['placa'];
+$renavam = $_POST['renavam'];
+$cilindradas = $_POST['cilindradas'];
+$combustivel = $_POST['combustivel'];
+$foto = $_FILES['foto'];
+
+
+$sql = $pdo->prepare("INSERT INTO `carro` VALUES (NULL,NULL, ?,?,?,?,?,?,?,now(),?,?,?,NULL)");
+$sql->execute($categoria, $cilindradas, $fabricante, $modelo, $ano, $cambio, $combustivel, $valor, $placa, $renavam);
+
+
+}
+
+?>
 
 
     <main></main>
@@ -214,14 +240,14 @@ label{
             <div class="cambio">
                 <p>Cambio</p>
                 <br>
-                <input type="radio" id="html" name="cambio" value="auto">
-                <label for="html">Auto</label><br>
+                <input type="radio" name="cambio" value="auto">
+                <label for="Auto">Auto</label><br>
                 <input type="radio" name="cambio" value="manual">
-                <label for="css">Manual</label>
+                <label for="Manual">Manual</label>
             </div>
 
             <p>Modelo</p>
-            <input type="text" required placeholder="corolla" name="modelo"  >
+            <input type="text" required placeholder="corolla" name="modelo">
             <p>Categoria</p>
             <select required name="categoria" >
                 <option value="Subcompacto">Subcompacto</option>
@@ -237,7 +263,7 @@ label{
                 <input id="valor" type="number" name="valor" placeholder="20000,00">
             </div>
             <p>Ano</p>
-            <input type="number" min="1900" max="2099" step="1" placeholder="2016" />
+            <input type="number" name="ano" min="1900" max="2099" step="1" placeholder="2016" />
             <p>Fabricante</p>
             <input type="text" required placeholder="fabricante" name="fabricante" >
             <div class="cambio">
@@ -246,13 +272,13 @@ label{
                 <input id="valor" type="number" name="placa" placeholder="BRA2E19">
             </div>
             <p>Cod Renavam</p>
-            <input type="number" min="00000000000" max="99999999999" step="1" placeholder="12345678912"/>
+            <input type="number" name="renavam" min="00000000000" max="99999999999" step="1" placeholder="12345678912"/>
             <p>Cilindradas</p>
-            <input type="number" min="1" max="50" step="1" placeholder="4"/>
+            <input type="number" name="cilindradas" min="1" max="50" step="1" placeholder="4"/>
             <div class="cambio">
-                <p>Imagem</p>
+                <p>Foto</p>
                 <br>
-                <input id="valor" type="file" name="placa" placeholder="BRA2E19">
+                <input id="valor" type="file" name="foto" placeholder="BRA2E19">
             </div>
             <select id="e" required name="combustivel" >
                 <option value="Gasolina comum">Gasolina comum</option>

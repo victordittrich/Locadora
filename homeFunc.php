@@ -187,7 +187,7 @@
 			session_start();
 
       if(isset($_SESSION['cpf'])){
-			if ($_SESSION['cpf']){
+			if ($_SESSION['cpf'] == '09720639946'){
         session_destroy();
 				header('Location: index.php');
 				exit;

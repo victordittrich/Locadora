@@ -125,15 +125,15 @@ select:-webkit-autofill:focus {
 <body>
 <?php
 
-    $pdo = new PDO('mysql:host=localhost;dbname=locadora','root', 'root');
+    include 'conexao.php';
     
     if(isset($_POST['acao'])){
     $cpf = $_POST['cpf'];
     $usuario = $_POST['usuario'];
     $senha = $_POST['senha'];
     $telefone = $_POST['telefone'];
-    $sql = $pdo->prepare("INSERT INTO `funcionario` VALUES (NULL, ?, ?, ?, ?)");
-    $sql->execute(array($cpf, $usuario, $senha, $telefone));
+    $sql = "INSERT INTO `funcionario`(`cpf`, `usuario`, `senha`, `telefone`) VALUES ('$cpf','$usuario','$senha','$telefone')";
+    $cadastrar = mysqli_query($conexao,$sql);
 	header('Location: home.php');
 	exit();
 }

@@ -187,29 +187,69 @@
 			session_start();
 
     
-      if(isset($_SESSION['cpf'])){
-			if ($_SESSION['cpf'] != '09720639946'){
+      if(empty($_SESSION['cpf'])){
         session_destroy();
 				header('Location: index.php');
-      }
-    }else{
-      session_destroy();
-				header('Location: index.php');
-    }
-      
+      }      
 		?>
     <header>
       <nav>
-        <a class="logo" href="home.php">Locadora | ADM</a>
+        <a class="logo" href="home.php">Locadora | 
+          <?php if($_SESSION['cpf'] == '09720639946'){
+            echo "ADM";
+          }else {
+            echo "Funcionário";
+          }
+          ?>
+       </a>
         <div class="mobile-menu">
           <div class="line1"></div>
           <div class="line2"></div>
           <div class="line3"></div>
         </div>
           <ul class="nav-list">
-            <li><a href="cadastrarFunc.php">CDT. FUNC.</a></li>
-            <li><a href="#">CARROS</a></li>
-            <li><a href="perfil.php"><img src="images/perfil.png" height="30px" alt=""></a></li>
+            <li><a href="<?php
+            if($_SESSION['cpf'] == '09720639946'){
+                echo "listarFunc.php";
+              }else {
+                echo "listarClientes.php";
+              }
+            ?>">
+            <?php
+            if($_SESSION['cpf'] == '09720639946'){
+                echo "FUNCIONÁRIOS";
+              }else {
+                echo "CLIENTES";
+              }
+            ?>
+          </a></li>
+            <li><a href="<?php
+            if($_SESSION['cpf'] == '09720639946'){
+                echo "cadastrarFunc.php";
+              }else {
+                echo "cadastrarClientes.php";
+              }
+            ?>"><?php
+            if($_SESSION['cpf'] == '09720639946'){
+                echo "CDT. FUNC.";
+              }else {
+                echo "CDT. CLIENTES";
+              }
+            ?></a></li>
+            <li><a href="<?php
+            if($_SESSION['cpf'] == '09720639946'){
+                echo "listarCarro.php";
+              }else {
+                echo "addCar.php";
+              }
+            ?>"><?php
+            if($_SESSION['cpf'] == '09720639946'){
+                echo "CARROS";
+              }else {
+                echo "CDT. CARROS";
+              }
+            ?></a></li>
+            <li><a href="perfil.php"><img style="filter: invert(100%);" src="images/perfil.png" height="30px" alt=""></a></li>
           </ul>
       </nav>
     </header>

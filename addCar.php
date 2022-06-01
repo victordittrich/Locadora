@@ -167,6 +167,10 @@ label{
 #valor{
     width: 80%;
 }
+#si{
+    width: 80%;
+    margin-left: 10px;
+}
 
 
     </style>
@@ -174,10 +178,8 @@ label{
 <body>
 
 <?php
-$pdo = new PDO('mysql:host=localhost;dbname=locadora','root', 'root');
-
+include 'conexao.php';
 if(isset($_POST['go'])){
-
 $marca = $_POST['marca'];
 $cambio = $_POST['cambio'];
 $modelo = $_POST['modelo'];
@@ -190,12 +192,13 @@ $renavam = $_POST['renavam'];
 $cilindradas = $_POST['cilindradas'];
 $combustivel = $_POST['combustivel'];
 $foto = $_FILES['foto'];
+$fototmp = $foto['tmp_name'];
+$foto = $foto['name'];
+move_uploaded_file($fototmp, 'images/' .$foto);
 
+$sql = "INSERT INTO `carro`( `alugado`,`marca`, `categoria`, `cilindradas`, `fabricante`, `modelo`, `ano`, `cambio`, `combustivel`, `dataCompra`, `valor`, `placa`, `renavam`, `foto`) VALUES ('n','$marca','$categoria','$cilindradas','$fabricante', '$modelo','$ano','$cambio','$combustivel',NOW(),'$valor','$placa','$renavam','$foto')";
 
-$sql = $pdo->prepare("INSERT INTO `carro` VALUES (NULL,NULL, ?,?,?,?,?,?,?,now(),?,?,?,NULL)");
-$sql->execute($categoria, $cilindradas, $fabricante, $modelo, $ano, $cambio, $combustivel, $valor, $placa, $renavam);
-
-
+$cadastrar = mysqli_query($conexao,$sql);
 }
 
 ?>
@@ -238,12 +241,11 @@ $sql->execute($categoria, $cilindradas, $fabricante, $modelo, $ano, $cambio, $co
                 <option value="Volvo">Volvo</option>
             </select>
             <div class="cambio">
-                <p>Cambio</p>
-                <br>
-                <input type="radio" name="cambio" value="auto">
-                <label for="Auto">Auto</label><br>
-                <input type="radio" name="cambio" value="manual">
-                <label for="Manual">Manual</label>
+                <p>Cambio</p><br>
+                <select id="si" required name="cambio" >
+                <option value="automatico">Automático</option>
+                <option value="manual">Manual</option>
+            </select>
             </div>
 
             <p>Modelo</p>
@@ -269,7 +271,7 @@ $sql->execute($categoria, $cilindradas, $fabricante, $modelo, $ano, $cambio, $co
             <div class="cambio">
                 <p>Placa</p>
                 <br>
-                <input id="valor" type="number" name="placa" placeholder="BRA2E19">
+                <input id="valor" type="text" name="placa" placeholder="BRA2E19">
             </div>
             <p>Cod Renavam</p>
             <input type="number" name="renavam" min="00000000000" max="99999999999" step="1" placeholder="12345678912"/>
@@ -290,7 +292,7 @@ $sql->execute($categoria, $cilindradas, $fabricante, $modelo, $ano, $cambio, $co
                 <option value="Picape">GNV</option>
                 <option value="Diesel">Diesel</option>
             </select>
-            <a href="homeFunc.php" id="ak">Voltar</a>
+            <a href="home.php" id="ak">Voltar</a>
             <input type="submit" name="go">
         </form>
     </div>

@@ -6,20 +6,15 @@
         $cpf = $_POST['cpf'];
         $senha = $_POST['senha'];
 		
-		$user = "root";
-		$password = "root";
-		$database = "locadora";
-		$hostname = "localhost";
-
-		$conexao = new mysqli($hostname,$user,$password,$database);
+		include 'conexao.php';
 
 		// Evita caracteres epeciais (SQL Inject)
 		$cpf = $conexao -> real_escape_string($_POST['cpf']);
 		$senha = $conexao -> real_escape_string($_POST['senha']);
 		
         //verifica o usuário no banco de dados.
-		$sql = "SELECT * FROM `adm` WHERE `cpf` = '".$cpf."' AND `senha` = '".$senha."';";
-		$sql2 = "SELECT * FROM `funcionario` WHERE `cpf` = '".$cpf."' AND `senha` = '".$senha."';";
+		$sql = "SELECT * FROM `adm` WHERE `cpf` = '$cpf' AND `senha` = '$senha';";
+		$sql2 = "SELECT * FROM `funcionario` WHERE `cpf` = '$cpf' AND `senha` = '$senha';";
 		$res = $conexao->query($sql);
 		$res2 = $conexao->query($sql2);
 
@@ -34,7 +29,7 @@
 			$row = $res2 -> fetch_array();
 			$_SESSION['cpf'] = $row[0];
 			$conexao -> close();
-			header('Location: homeFunc.php', true, 301);
+			header('Location: home.php', true, 301);
 			exit();
 		} else {
 			$conexao -> close();

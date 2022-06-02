@@ -199,6 +199,7 @@ move_uploaded_file($fototmp, 'images/' .$foto);
 $sql = "INSERT INTO `carro`( `alugado`,`marca`, `categoria`, `cilindradas`, `fabricante`, `modelo`, `ano`, `cambio`, `combustivel`, `dataCompra`, `valor`, `placa`, `renavam`, `foto`) VALUES ('n','$marca','$categoria','$cilindradas','$fabricante', '$modelo','$ano','$cambio','$combustivel',NOW(),'$valor','$placa','$renavam','$foto')";
 
 $cadastrar = mysqli_query($conexao,$sql);
+header('Location: listarCarro.php');
 }
 
 ?>

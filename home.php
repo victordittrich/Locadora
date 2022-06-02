@@ -223,30 +223,18 @@
               }
             ?>
           </a></li>
-            <li><a href="<?php
-            if($_SESSION['cpf'] == '09720639946'){
-                echo "cadastrarFunc.php";
-              }else {
-                echo "cadastrarClientes.php";
-              }
-            ?>"><?php
-            if($_SESSION['cpf'] == '09720639946'){
-                echo "CDT. FUNC.";
-              }else {
-                echo "CDT. CLIENTES";
-              }
-            ?></a></li>
+            
             <li><a href="<?php
             if($_SESSION['cpf'] == '09720639946'){
                 echo "listarCarro.php";
               }else {
-                echo "addCar.php";
+                echo "listarCarro.php";
               }
             ?>"><?php
             if($_SESSION['cpf'] == '09720639946'){
                 echo "CARROS";
               }else {
-                echo "CDT. CARROS";
+                echo "CARROS";
               }
             ?></a></li>
             <li><a href="perfil.php"><img style="filter: invert(100%);" src="images/perfil.png" height="30px" alt=""></a></li>

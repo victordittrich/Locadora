@@ -180,7 +180,7 @@ main {
                     <td><?php echo $renavam ?></td>
                     <td > 
                         
-                        <a class="btn btn-warning btn-sm" style="color:#fff" role="button" href="editar_carro.php?id=<?php echo $id  ?>">Editar</a> 
+                        <a class="btn btn-warning btn-sm" style="color:#fff" role="button" href="atualizarCarro.php?id=<?php echo $id  ?>&carroNome=<?php echo $modelo ?>">Editar</a> 
                         <a class="btn btn-danger btn-sm" style="color:#fff" role="button" href="deletarCarro.php?id=<?php echo $id ?>">Deletar</a>
                         <a class="btn btn-info btn-sm" style="color:#fff" role="button" href="alugar_carro.php?id=<?php echo $id ?>">Alugar</a>
                 

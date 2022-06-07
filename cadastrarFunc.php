@@ -129,13 +129,18 @@ select:-webkit-autofill:focus {
     
     if(isset($_POST['acao'])){
     $cpf = $_POST['cpf'];
+    if($cpf == '09720639946'){
+        echo "<script>alert('CPF DE ADM FDP??')</script>";
+    }else{
     $usuario = $_POST['usuario'];
     $senha = $_POST['senha'];
     $telefone = $_POST['telefone'];
     $sql = "INSERT INTO `funcionario`(`cpf`, `usuario`, `senha`, `telefone`) VALUES ('$cpf','$usuario','$senha','$telefone')";
     $cadastrar = mysqli_query($conexao,$sql);
 	header('Location: home.php');
-	exit();
+	exit(); 
+    }
+    
 }
 ?>
     <main></main>
@@ -144,6 +149,7 @@ select:-webkit-autofill:focus {
         <br>
         <form method="post">
             <p>CPF</p>
+            <p style="color:red;" name="erro"></p>
             <input type="text" required="required" placeholder="CPF" name="cpf" pattern="(\d{3}\.?\d{3}\.?\d{3}-?\d{2})|(\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2})">
             <p>Usuário</p>
             <input required="required" type="text" name="usuario" placeholder="username">
@@ -155,7 +161,7 @@ select:-webkit-autofill:focus {
             <input required="required" type="password" placeholder="password" name="confsenha" id="confsenha">
             <input onclick="test()" type="submit" value="Cadastrar" name="acao" >
             <br>
-            <a href="home.php" id="ak">Voltar</a>
+            <a href="listarFunc.php" id="ak">Voltar</a>
         </form>
     </div>
     <script src="confirm.js"></script>

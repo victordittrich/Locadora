@@ -129,11 +129,13 @@ select:-webkit-autofill:focus {
     
     if(isset($_POST['acao'])){
     $cpf = $_POST['cpf'];
-    $usuario = $_POST['usuario'];
+    $nome = $_POST['nome'];
     $cnh = $_POST['cnh'];
     $cep = $_POST['cep'];
     $telefone = $_POST['telefone'];
-    $sql = "INSERT INTO `clientes`(`cpf`, `telefone`, `usuario`, `cnh`, `cep`) VALUES ('$cpf','$telefone','$usuario','$cnh', '$cep')";
+    $endereco = $_POST['endereco'];
+
+    $sql = "INSERT INTO `clientes`(`cpf`, `telefone`, `nome`, `cnh`, `cep`, `endereco`) VALUES ('$cpf','$telefone', '$nome' ,'$cnh','$cep','$endereco')";
     $cadastrar = mysqli_query($conexao,$sql);
 	header('Location: home.php');
 	exit();
@@ -145,15 +147,17 @@ select:-webkit-autofill:focus {
         <br>
         <form method="post">
             <p>CPF</p>
-            <input type="text" required="required" placeholder="CPF" name="cpf" pattern="(\d{3}\.?\d{3}\.?\d{3}-?\d{2})|(\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2})">
-            <p>Usuário</p>
-            <input required="required" type="text" name="usuario" placeholder="username">
+            <input type="text" required placeholder="CPF" name="cpf" pattern="(\d{3}\.?\d{3}\.?\d{3}-?\d{2})|(\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2})">
+            <p>Primeiro e último nome</p>
+            <input required type="text" name="nome" placeholder="nome">
             <p>Telefone</p>
-            <input required="required" type="text" name="telefone" placeholder="telefone">
+            <input required type="text" name="telefone" placeholder="telefone">
             <p>CNH</p>
-            <input required="required" type="number" name="cnh" placeholder="46245...">
+            <input required type="number" name="cnh" placeholder="46245...">
             <p>CEP</p>
-            <input required="required" type="number" name="cep" placeholder="88304150">
+            <input required type="number" name="cep" placeholder="88304150">
+            <p>Endereço</p>
+            <input required type="text" placeholder="rua teodoro, casa 235..." name="endereco">
             <input type="submit" value="Cadastrar" name="acao" >
             <br>
             <a href="home.php" id="ak">Voltar</a>

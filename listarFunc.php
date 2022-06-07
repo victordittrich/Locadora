@@ -155,8 +155,8 @@ main {
                     
                     <td style="display: flex;"> 
                         
-                        <a class="btn btn-warning btn-sm" style="color:#fff; margin-right: 5px; height:30px;" role="button" href="atualizarFunc.php?id=<?php echo $id  ?>">Editar</a> 
-                        <a class="btn btn-danger btn-sm" style="color:#fff" role="button" href="deletarFunc.php?id=<?php echo $id ?>">Deletar</a>
+                        <a class="btn btn-warning btn-sm" style="color:#fff; margin-right: 5px; height:30px;" role="button" href="atualizarFunc.php?id=<?php echo $id ?>&user=<?php echo $usuario ?>">Editar</a> 
+                        <a class="btn btn-danger btn-sm" style="color:#fff" role="button" href="deletarFunc.php?id=<?php echo $id ?>&user=<?php echo $usuario ?>">Deletar</a>
                 
                     </td>
                 </tr> 

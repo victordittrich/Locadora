@@ -117,7 +117,7 @@ main {
 </style>
 </head>
 <body>
-    <main><h1 id="txt">Funcionários</h1></main>
+    <main><h1 id="txt">Clientes</h1></main>
 
   
     <table class="table table-dark table-hover ">
@@ -125,9 +125,10 @@ main {
                 <tr>
                 <th scope="col">CPF</th>
                 <th scope="col">Telefone</th>
-                <th scope="col">Usuario</th>
+                <th scope="col">Nome</th>
                 <th scope="col">CNH</th>
                 <th scope="col">CEP</th>
+                <th scope="col">Endereço</th>
                 <th scope="col">Ações</th>
 
                 </tr>
@@ -144,21 +145,23 @@ main {
                         $id = $array['id'];
                         $cpf = $array['cpf'];
                         $telefone = $array['telefone'];
-                        $usuario = $array['usuario'];
+                        $nome = $array['nome'];
                         $cnh = $array['cnh'];                        
                         $cep = $array['cep'];
+                        $endereco = $array['endereco']; 
                         
                     ?>
                 <tr>
                     <td><?php echo $cpf ?></td>
                     <td><?php echo $telefone ?></td>
-                    <td><?php echo $usuario ?></td>
+                    <td><?php echo $nome ?></td>
                     <td><?php echo $cnh ?></td>
                     <td><?php echo $cep ?></td>
-                    
+                    <td><?php echo $endereco ?></td>
+
                     <td style="display: flex;"> 
                         
-                        <a class="btn btn-warning btn-sm" style="color:#fff; margin-right: 5px; height:30px;" role="button" href="atualizarCliente.php?id=<?php echo $id  ?>">Editar</a> 
+                        <a class="btn btn-warning btn-sm" style="color:#fff; margin-right: 5px; height:30px;" role="button" href="atualizarCliente.php?id=<?php echo $id  ?>&user=<?php echo $nome ?>">Editar</a> 
                         <a class="btn btn-danger btn-sm" style="color:#fff" role="button" href="deletarCliente.php?id=<?php echo $id ?>">Deletar</a>
                 
                     </td>

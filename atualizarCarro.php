@@ -39,7 +39,7 @@ h1 {
     letter-spacing: 10px;
     text-transform: uppercase;
     text-align: center;
-    font-size: 23px;
+    font-size: 20px;
 }
 
 .login p{
@@ -179,6 +179,10 @@ label{
 
 <?php
 include 'conexao.php';
+
+$carroNome = $_GET['carroNome'];
+$id = $_GET['id'];
+
 if(isset($_POST['go'])){
 $marca = $_POST['marca'];
 $cambio = $_POST['cambio'];
@@ -196,7 +200,7 @@ $fototmp = $foto['tmp_name'];
 $foto = $foto['name'];
 move_uploaded_file($fototmp, 'images/' .$foto);
 
-$sql = "INSERT INTO `carro`( `alugado`,`marca`, `categoria`, `cilindradas`, `fabricante`, `modelo`, `ano`, `cambio`, `combustivel`, `dataCompra`, `valor`, `placa`, `renavam`, `foto`) VALUES ('n','$marca','$categoria','$cilindradas','$fabricante', '$modelo','$ano','$cambio','$combustivel',NOW(),'$valor','$placa','$renavam','$foto')";
+$sql = "UPDATE `carro` SET `marca`='$marca',`categoria`='$categoria',`cilindradas`='$cilindradas',`fabricante`='$fabricante',`modelo`='$modelo',`ano`='$ano',`cambio`='$cambio',`combustivel`='$combustivel',`valor`='$valor',`placa`='$placa',`renavam`='$renavam',`foto`='$foto' WHERE `id` = '$id'";
 
 $cadastrar = mysqli_query($conexao,$sql);
 header('Location: listarCarro.php');
@@ -207,7 +211,7 @@ header('Location: listarCarro.php');
 
     <main></main>
     <div class="login">
-        <h1>Cadastro de Carro</h1>
+        <h1>Atualizar "<?php echo $carroNome ?>"</h1>
         <br>
         <form enctype="multipart/form-data" method="post">
             <p>Marca</p>
@@ -294,7 +298,7 @@ header('Location: listarCarro.php');
                 <option value="Diesel">Diesel</option>
             </select>
             <a href="listarCarro.php" id="ak">Voltar</a>
-            <input value="Cadastrar" type="submit" name="go">
+            <input value="Atualizar" type="submit" name="go">
         </form>
     </div>
     <script src="confirm.js"></script>

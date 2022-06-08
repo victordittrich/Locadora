@@ -223,6 +223,7 @@
               }
             ?>
           </a></li>
+          <li><a href="listarAlugados.php">LOCAÇÕES</a></li>
             
             <li><a href="<?php
             if($_SESSION['cpf'] == '09720639946'){

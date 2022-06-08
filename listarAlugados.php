@@ -117,19 +117,18 @@ main {
 </style>
 </head>
 <body>
-    <main><h1 id="txt">Clientes</h1></main>
+    <main><h1 id="txt">Alugados</h1></main>
 
   
     <table class="table table-dark table-hover ">
             <thead>
                 <tr>
-                <th scope="col">CPF</th>
-                <th scope="col">Telefone</th>
-                <th scope="col">Nome</th>
-                <th scope="col">CNH</th>
-                <th scope="col">CEP</th>
-                <th scope="col">Endereço</th>
+                <th scope="col">ID</th>
+                <th scope="col">ID Cliente</th>
+                <th scope="col">ID Carro</th>
+                <th scope="col">Data de Locação</th>
                 <th scope="col">Ações</th>
+
 
                 </tr>
             </thead>
@@ -137,33 +136,26 @@ main {
                     <?php
 
                     include 'conexao.php';
-                    $sql = "SELECT * FROM `clientes`";
+                    $sql = "SELECT * FROM `alugados`";
                     $busca = mysqli_query($conexao,$sql);
 
 
                     while($array = mysqli_fetch_array($busca)){
 
                         $id = $array['id'];
-                        $cpf = $array['cpf'];
-                        $telefone = $array['telefone'];
-                        $nome = $array['nome'];
-                        $cnh = $array['cnh'];                        
-                        $cep = $array['cep'];
-                        $endereco = $array['endereco']; 
+                        $idCliente = $array['idCliente'];
+                        $idCarro = $array['idCarro'];
+                        $dataLoc = $array['dataLoc'];
                         
                     ?>
                 <tr>
-                    <td><?php echo $cpf ?></td>
-                    <td><?php echo $telefone ?></td>
-                    <td><?php echo $nome ?></td>
-                    <td><?php echo $cnh ?></td>
-                    <td><?php echo $cep ?></td>
-                    <td><?php echo $endereco ?></td>
+                    <td><?php echo $id ?></td>
+                    <td><?php echo $idCliente ?></td>
+                    <td><?php echo $idCarro ?></td>
+                    <td><?php echo $dataLoc ?></td>
 
                     <td style="display: flex;"> 
-                        
-                        <a class="btn btn-warning btn-sm" style="color:#fff; margin-right: 5px; height:30px;" role="button" href="atualizarCliente.php?id=<?php echo $id  ?>&user=<?php echo $nome ?>">Editar</a> 
-                        <a class="btn btn-danger btn-sm" style="color:#fff" role="button" href="deletarCliente.php?id=<?php echo $id ?>">Deletar</a>
+                        <a class="btn btn-danger btn-sm" style="color:#fff" role="button" href="deletarLoc.php?id=<?php echo $id ?>&carro=<?php echo $idCarro ?>">DEVOLVER</a>
                 
                     </td>
                 </tr> 
@@ -171,8 +163,7 @@ main {
                     <?php } ?> 
                     
         </table>
-        <a  href="home.php" class="test"><button class="bt">VOLTAR</button></a>       
-        <a  href="cadastrarClientes.php" class="test1"><button class="bt">NOVO CLIENTE</button></a>
+        <a  href="home.php" class="test"><button class="bt">VOLTAR</button></a>
 
 
    

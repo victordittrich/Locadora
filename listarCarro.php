@@ -20,6 +20,10 @@ main {
     padding: 0;
 }
 
+body{
+    background-color: black;
+}
+
 .login {
     width: 300px;
     height: auto;
@@ -113,6 +117,9 @@ main {
     transform: translate(-50%);
 }
 
+td{
+    vertical-align: middle;
+}
 
 </style>
 </head>
@@ -138,7 +145,7 @@ main {
                 <th scope="col">Renavam</th>
                 <th scope="col">Ação</th>
                 </tr>
-            </thead>
+            </thead>0
 
                     <?php
 
@@ -163,6 +170,10 @@ main {
                         $placa = $array['placa'];
                         $renavam = $array['renavam'];
                         
+                        if($alugado == 'n'){
+
+                        
+
                     ?>
                 <tr>
                     <td> <img style="width:150px" src="<?php echo "images/$foto" ?>"></td>
@@ -179,15 +190,16 @@ main {
                     <td><?php echo $placa ?></td>
                     <td><?php echo $renavam ?></td>
                     <td > 
-                        
+                        <?php  $idCarro = $id; ?>
                         <a class="btn btn-warning btn-sm" style="color:#fff" role="button" href="atualizarCarro.php?id=<?php echo $id  ?>&carroNome=<?php echo $modelo ?>">Editar</a> 
                         <a class="btn btn-danger btn-sm" style="color:#fff" role="button" href="deletarCarro.php?id=<?php echo $id ?>">Deletar</a>
-                        <a class="btn btn-info btn-sm" style="color:#fff" role="button" href="alugar_carro.php?id=<?php echo $id ?>">Alugar</a>
+                        <a class= 'btn btn-info btn-sm' style='color:#fff' role='button' href='alugar.php?carro=<?php echo $idCarro ?>'>Alugar</a>
+                        
                 
                     </td>
                 </tr> 
 
-                    <?php } ?>
+                    <?php }} ?>
         </table>
         <a  href="home.php" class="test"><button class="bt">VOLTAR</button></a>       
         <a  href="addCar.php" class="test1"><button class="bt">NOVO CARRO</button></a>

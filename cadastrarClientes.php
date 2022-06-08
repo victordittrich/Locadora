@@ -127,6 +127,8 @@ select:-webkit-autofill:focus {
 
     include 'conexao.php';
     
+   
+
     if(isset($_POST['acao'])){
     $cpf = $_POST['cpf'];
     $nome = $_POST['nome'];

@@ -161,9 +161,9 @@ main {
                     <td><?php echo $endereco ?></td>
 
                     <td style="display: flex;"> 
+                        <?php $idCarro = $_GET['carro']; ?>
                         
-                        <a class="btn btn-warning btn-sm" style="color:#fff; margin-right: 5px; height:30px;" role="button" href="atualizarCliente.php?id=<?php echo $id  ?>&user=<?php echo $nome ?>">Editar</a> 
-                        <a class="btn btn-danger btn-sm" style="color:#fff" role="button" href="deletarCliente.php?id=<?php echo $id ?>">Deletar</a>
+                        <a class="btn btn-danger btn-sm" style="color:#fff" role="button" href="locar.php?carro=<?php echo $idCarro ?>&cliente=<?php echo $id ?>">Selecionar</a>
                 
                     </td>
                 </tr> 

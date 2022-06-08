@@ -7,4 +7,6 @@ $password = "root";
 
 $conexao = mysqli_connect($servername, $username, $password, $database);
 
+session_start();
+
 ?>
